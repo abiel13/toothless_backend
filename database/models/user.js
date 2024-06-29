@@ -1,13 +1,13 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
       required: true,
     },
     cart: {
-      type: mongoose.Types.ObjectId,
+      type: [mongoose.Types.ObjectId],
       ref: "Product",
       required: true,
     },
@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema(
     favorites: {
       type: [mongoose.Types.ObjectId],
       ref: "Product",
-      required: true,
+      default: [],
     },
   },
   { timestamps: true }
